@@ -1,36 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+  <!-- Load stylesheet -->
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/application.css">
-  <!-- Load Vollkorn font -->
-  <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/login.css">
 
+  <!-- Load Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400italic,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<!-- Scripts and Scripts and Scripts -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/views/jquery.loadTemplate-1.4.4.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/views/jquery.leanModal.min.js"></script>
+  <script src="/js/views/login.js"></script>
   <script src="/js/application.js"></script>
 
   <title></title>
 </head>
 <body>
-<div id="content">
-  <header>
-    <a href="/"><img src="/img/zenchinese.png" class="logo"></a>
+<header>
+  <div id="top-span">
+    <div id="top-header">
+      <a href="/"><h1 id='header-text'>LilGist</a></h1>
+    </div>
+  </div>
+  <div id="login-span">
     <div id="login-toolbar">
-      <% if current_user %>
-        <a href="/logout">Logout</a>
-      <% else %>
-        <a href="/login">Login</a>
+    <% if current_user %>
+      <a id="logout-link" href="/logout">Logout</a>
+    <% else %>
+      <% if !@error%>
+      <a id="login-link" href="#loginmodal">Login</a>
+      <a id="signup-link" href="#signup"">Signup</a>
       <% end %>
-  </header>
+    <% end %>
+    </div>
+  </div>
+</header>
+<div id="content">
   <%= yield %>
 </div>
 </body>
+
+<div id ="loginmodal" class="loginmodal" style="display:none;">
+  <h1 id="login-header">LilGist</h1>
+  <form id ="loginform" class="loginform" name="loginform" method="post" action='/authenticate/user'>
+    <label for="username">Username:</label>
+    <input type="text" name="user[name]" id="username" class="txtfield" tabindex="1">
+    <label for="password">Password:</label>
+    <input type="password" name="user[password]" id="password" class="txtfield" tabindex="2">
+    <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="Log In" tabindex="3"></div>
+  </form>
+
+<script type="text/html" id="signup">
+  <div class="small-buffer"></div>
+  <div id ="signupnonmodal" class='loginmodal'>
+  <h1 id="login-header">LilGist</h1>
+  <form id = "signupnonmodal" class="loginform" action="/users" method="post">
+    <div class='hr-input-field'>
+      <label>your username</label>
+      <input type='text' name='user[name]' />
+    </div>
+    <div class='hr-input-field'>
+      <label>your email</label>
+      <input type='text' name='user[email]s' />
+    </div>
+    <div class='hr-input-field'>
+      <label>your password</label>
+      <input type='password' name='user[password]' />
+      <br><br>
+      <div class="center"><input type="submit" class="flatbtn-blu hidemodal" value="Sign up" tabindex="3"></div>
+    </div>
+  </form>
+  </div>
+</script>
 </html>
+
+
