@@ -1,5 +1,11 @@
+ # non ajax
+
 get '/' do
-  erb :welcome
+  unless current_user
+    erb :welcome
+  else
+    erb :index
+  end
 end
 
 get '/authenticate/user/failure' do
@@ -7,11 +13,34 @@ get '/authenticate/user/failure' do
     erb :welcome
 end
 
-post '/authenticate/signup.json' do
-  content_type :json
+post '/users' do
   user = User.create(params[:user])
-  user.to_json
+  session[:user_id] = user.id
+  redirect '/'
 end
+
+post '/login' do
+  user = User.find_by(name: params[:user][:name])
+  if user.try(:authenticate, params[:user][:password])
+    session[:user_id] = user.id
+    redirect '/'
+  else
+    redirect '/'
+  end
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+
+
+# post '/authenticate/signup.json' do
+#   content_type :json
+#   user = User.create(params[:user])
+#   p params
+#   user.to_json
+# end
 
 
 

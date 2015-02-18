@@ -1,19 +1,23 @@
 # Ajax Routes # # # #
- 
+
 get '/lilgists.json' do
   content_type :json
-  lilgist.all.map{ |lgst| lgst.to_hash }.to_json
+  user = User.find(current_user.id)
+  lilgists = user.lilgists
+  lilgists.to_json
 end
 
 get '/lilgists/:id/show.json' do
  content_type :json
- lilgist.find(params[:id]).to_hash.to_json 
+ lilgist.find(params[:id]).to_json
 end
 
 post '/lilgists/create.json' do
   content_type :json
-  lilgist = lilgist.create( params )
-  lilgist.to_hash.to_json
+  lilgist = Lilgist.new(params[:lilgist])
+  lilgist.user_id = current_user.id
+  lilgist.save
+  # lilgist.to_json
 end
 
 put '/lilgists/:id/update.json' do
@@ -23,8 +27,13 @@ put '/lilgists/:id/update.json' do
   redirect "/lilgists/#{params[:id]}"
 end
 
-delete '/lilgists/:id/destroy.json' do
- content_type :json
- lilgist.find(params[:id]).destroy
- redirect "/lilgists" 
+get '/lilgists/:id/delete' do
+ Lilgist.find(params[:id]).destroy
+ redirect "/"
 end
+
+get '/lilgists/:id/put' do |
+
+
+end
+

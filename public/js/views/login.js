@@ -5,5 +5,10 @@ $(document).ready(function() {
   $('#signup-link').click(function (event) {
     event.preventDefault();
     $('#template-container').loadTemplate($('#signup'))
+      // $('#signupnonmodal').submit(function (event) {
+      //   event.preventDefault();
+      //   User.create();
+
+      // })
   });
 });

@@ -1,0 +1,51 @@
+<div id='main-div'>
+<% if current_user.lilgist_count == 0%>
+  <div class='buffer'></div>
+    <h3>Welcome, <%=current_user.name%>. You have no lilgists!</h3>
+  <div id='create'>
+    <div class="tiny-buffer"></div>
+      <form id="toggle-create">
+        <input type="submit" name="create" id="create" class="flatbtn-blu hidemodal" value="New lilGist" tabindex="3">
+      </form>
+    </div>
+  </div>
+</div>
+<%else%>
+  <div id='lilgists'>
+    <%lilgists = current_user.lilgists%>
+    <%lilgists.each do |lgst|%>
+      <%=lgst.name%>
+      <%=lgst.content%>
+    <a href='/lilgists/<%=lgst.id%>/delete'>delete<a/>
+    <a href='/lilgists/<%=lgst.id%>/edit'>edit<a/>
+    <% end %>
+  </div>
+<%end%>
+
+
+<script type="text/html" id="create-lil-gist-template">
+  <div class='small-buffer'></div>
+  <div id="create-lil-gist-div" class='loginmodal'>
+  <form id="create-lil-gist-form" class="loginform">
+    <label class='logo-label'>lilGist</label>
+    <div class='hr-input-field'>
+      <label>name</label>
+      <input type='text' class="lil-gist-input" name='lilgist[name]'/>
+    </div>
+    <div class='hr-input-field'>
+    <label>code</label>
+      <textarea class="lil-gist-input" id="code-input" name="lilgist[content]" cols="62" rows="18"></textarea>
+    </div>
+    <input type="submit" id="submit-code" class="flatbtn-blu hidemodal" value="Submit" tabindex="3">
+  </form>
+  </div>
+</script>
+
+<script type="text/html" id="show-lil-gists-template">
+    <div data-content="name"></div>
+    <div data-content="content"></div>
+</script>
+
+
+</script>
+

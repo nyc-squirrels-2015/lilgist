@@ -93,12 +93,38 @@ header {
     margin-left: 30%;
             }
 
+.logo-label {
+    font-family: 'Pacifico', cursive;
+}
+#create-lil-gist-div {
+    width: 100%;
+}
+
+#create-lil-gist-form {
+    width: 100%;
+}
+
+.lil-gist-input {
+    width: 100%;
+    padding: 5px;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+#submit-code{
+ /*   float:right;
+*/    margin-left: 73%;
+      background-color: #343434;
+}
+
 .logo {
   height: 9em;
   padding-right: .7em;
   display: inline;
 }
-
+.tiny-buffer {
+    height: 25px;
+}
 .small-buffer {
     height: 50px;
 }
