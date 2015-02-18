@@ -5,6 +5,7 @@ class CreateLilgists < ActiveRecord::Migration
       t.string :content, null: false
 
       t.references :user
+      t.references :language
     end
   end
 end
