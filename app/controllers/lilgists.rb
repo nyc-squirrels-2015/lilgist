@@ -32,8 +32,14 @@ get '/lilgists/:id/delete' do
  redirect "/"
 end
 
-get '/lilgists/:id/put' do |
+get '/lilgists/:id/edit' do
+  @lilgist = Lilgist.find(params[:id])
+  erb :edit
+end
 
-
+post '/lilgists/:id/put' do
+  lilgist = Lilgist.find(params[:id])
+  lilgist.update(params[:lilgist])
+  redirect '/'
 end
 

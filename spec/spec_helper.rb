@@ -1,5 +1,4 @@
 require 'rubygems'
-require_relative '../../app/js/helpers/auth.rb'
 # All our specs should require 'spec_helper' (this file)
 
 # If RACK_ENV isn't set, set it to 'test'.  Sinatra defaults to development,
