@@ -27,19 +27,19 @@ put '/lilgists/:id/update.json' do
   redirect "/lilgists/#{params[:id]}"
 end
 
-get '/lilgists/:id/delete' do
- Lilgist.find(params[:id]).destroy
- redirect "/"
-end
+# get '/lilgists/:id/delete' do
+#  Lilgist.find(params[:id]).destroy
+#  redirect "/"
+# end
 
-get '/lilgists/:id/edit' do
-  @lilgist = Lilgist.find(params[:id])
-  erb :edit
-end
+# get '/lilgists/:id/edit' do
+#   @lilgist = Lilgist.find(params[:id])
+#   erb :edit
+# end
 
-post '/lilgists/:id/put' do
-  lilgist = Lilgist.find(params[:id])
-  lilgist.update(params[:lilgist])
-  redirect '/'
-end
+# post '/lilgists/:id/put' do
+#   lilgist = Lilgist.find(params[:id])
+#   lilgist.update(params[:lilgist])
+#   redirect '/'
+# end
 

@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Lilgist</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+
+  <!-- Load Fonts -->
+
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400italic,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+  <!-- -->
+
 </head>
 <body>
+  <header>
+    <div id="top-span">
+      <div id="top-header">
+        <a href="/"><h1 id='header-text'>LilGist</a></h1>
+      </div>
+    </div>
+  <%= render "welcome/nav" %>
+  </header>
 
 <%= yield %>
 
