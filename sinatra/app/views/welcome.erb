@@ -1,0 +1,21 @@
+<%if @error%>
+  <div id ="error">
+    <div class ="buffer"></div>
+    <img src="/img/robot.png" id="error-img">
+    <div id="error-txt">
+    You entered either your username or password incorrectly.<br><br>
+    Perhaps you don't have an account, or maybe you aren't smart enough to use lilGist? <br><br>
+    Go <a href= '/'>back </a> to try again.
+    </div>
+  </div>
+  <% else %>
+
+<div id="template-container">
+  <div class="buffer"></div>
+  <div id="welcome-txt">
+  <h1> Welcome to lilGist! </h1>
+  <p> lilGist is an interactive, sleek, dynamic, stylish, lightweight, object-oriented, test-driven, community-based, iterative way for you to write smaller gists and access them from one page!</p>
+
+</div>
+
+<% end %>

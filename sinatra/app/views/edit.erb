@@ -1,0 +1,16 @@
+<div class='small-buffer'></div>
+  <div id="create-lil-gist-div" class='loginmodal'>
+  <form id="edit-lil-gist-form" class="loginform" action='/lilgists/<%=@lilgist.id%>/put' method='post'>
+    <label class='logo-label'>lilGist</label>
+    <div class='hr-input-field'>
+      <label>name</label>
+      <input type='text' class="lil-gist-input" name='lilgist[name]'/>
+    </div>
+    <div class='hr-input-field'>
+    <label>code</label>
+      <textarea class="lil-gist-input" id="code-input" name="lilgist[content]" cols="62" rows="18"></textarea>
+    </div>
+    <input type="submit" id="submit-code" class="flatbtn-blu hidemodal" value="Submit" tabindex="3">
+  </form>
+</div>
+
