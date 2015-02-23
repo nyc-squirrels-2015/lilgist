@@ -6,8 +6,8 @@ class SessionController < ApplicationController
   end
 
   def login
-    user = User.find_by(accepted_user_params)
-    if user.try(accepted_user_params)
+    user = User.find_by(accepted_session_params)
+    if user.try(accepted_session_params)
       session[:user_id] = user.id
       redirect_to '/'
     else
@@ -21,7 +21,8 @@ class SessionController < ApplicationController
 
   private
 
-  def accepted_user_params
-    params.require(:user).permit(:name, :email, :password)
+  def accepted_session_params
+    params.require(:session).permit(:name, :email, :password_digest)
   end
+
 end
